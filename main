@@ -8,3 +8,51 @@
 
 
 // Add edit task, complete task, and delete task functionalities.
+private static void editTask() {
+    System.out.print("Enter the task number to edit: ");
+    int taskNumber = scanner.nextInt();
+    scanner.nextLine();  // Consume newline left-over
+
+
+    if (taskNumber < 1 || taskNumber > tasks.size()) {
+        System.out.println("Invalid task number.");
+    } else {
+        System.out.print("Enter the new task name: ");
+        String newName = scanner.nextLine();
+        tasks.get(taskNumber - 1).name = newName;
+        System.out.println("Task updated successfully.");
+    }
+}
+
+
+private static void markTaskAsComplete() {
+    System.out.print("Enter the task number to mark as complete: ");
+    int taskNumber = scanner.nextInt();
+    scanner.nextLine();  // Consume newline left-over
+
+
+    if (taskNumber < 1 || taskNumber > tasks.size()) {
+        System.out.println("Invalid task number.");
+    } else {
+        tasks.get(taskNumber - 1).isCompleted = true;
+        System.out.println("Task marked as complete.");
+    }
+}
+
+
+private static void deleteTask() {
+    System.out.print("Enter the task number to delete: ");
+    int taskNumber = scanner.nextInt();
+    scanner.nextLine();  // Consume newline left-over
+
+
+    if (taskNumber < 1 || taskNumber > tasks.size()) {
+        System.out.println("Invalid task number.");
+    } else {
+        tasks.remove(taskNumber - 1);
+        System.out.println("Task deleted successfully.");
+    }
+}
+}
+
+
