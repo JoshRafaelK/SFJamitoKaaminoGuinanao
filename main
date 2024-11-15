@@ -3,8 +3,61 @@
 
 
 // Add Show Menu, view task, add task, filter task functionalities.
+ private static void showMenu() {
+        System.out.println("\nTo-D");
+        System.out.println("1. Add a Task");
+        System.out.println("2. View Tasks");
+        System.out.println("3. Filter Completed or Incomplete tasks");
+        System.out.println("4. Edit a Task");
+        System.out.println("5. Mark a task as Complete");
+        System.out.println("6. Delete a task of Choice");
+        System.out.println("7. Exit Program");
+        System.out.print("Enter your choice (Numerical Digits): ");
+    }
 
 
+    private static void addTask() {
+        System.out.print("Enter task name: ");
+        String taskName = scanner.nextLine();
+        tasks.add(new Task(taskName));
+        System.out.println("Task added.");
+    }
 
+
+    private static void viewAllTasks() {
+        if (tasks.isEmpty()) {
+            System.out.println("No tasks available.");
+        } else {
+            System.out.println("\nAll Tasks:");
+            for (int i = 0; i < tasks.size(); i++) {
+                System.out.println((i + 1) + ". " + tasks.get(i));
+            }
+        }
+    }
+
+
+    private static void filterTasks() {
+        System.out.println("\nFilter Tasks by Status:");
+        System.out.println("1. Show Completed Tasks");
+        System.out.println("2. Show Incomplete Tasks");
+        System.out.print("Enter your choice: ");
+        int choice = scanner.nextInt();
+        scanner.nextLine();  // Consume newline left-over
+
+
+        boolean found = false;
+        for (int i = 0; i < tasks.size(); i++) {
+            Task task = tasks.get(i);
+            if ((choice == 1 && task.isCompleted) || (choice == 2 && !task.isCompleted)) {
+                System.out.println((i + 1) + ". " + task);
+                found = true;
+            }
+        }
+
+
+        if (!found) {
+            System.out.println("No tasks found for the selected filter.");
+        }
+    }
 
 // Add edit task, complete task, and delete task functionalities.
